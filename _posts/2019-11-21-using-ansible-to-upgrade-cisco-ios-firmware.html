@@ -1,0 +1,143 @@
+---
+layout: post
+title: Using Ansible to upgrade Cisco IOS firmware
+date: 2019-11-21 09:35:13.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Network Automation
+tags:
+- ansible
+- cisco
+meta:
+  _publicize_job_id: '37650227381'
+  timeline_notification: '1574328916'
+author:
+  login: fraserkr160118
+  email: fraser.kr@gmail.com
+  display_name: Fraser Clark
+  first_name: Fraser
+  last_name: Clark
+permalink: "/2019/11/21/using-ansible-to-upgrade-cisco-ios-firmware/"
+---
+<p><!-- wp:paragraph --></p>
+<p>Update 13/01/2019:<br />As you will see on my github page, there are two scripts in the upgrade ios folder. One is to transfer and verify md5 and the other is to upgrade is required.<br />I did this as I found it was easier to section out these two tasks rather than having one large script doing everything and causing more pain if it crashed or got interrupted.<br />It also meant I could prepare beforehand and have everything ready for the change window.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>All the code for this (and more) can be found here:  <a href="https://github.com/fraserc182/network-automation">https://github.com/fraserc182/network-automation</a> </p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Ansible was the first time I started dipping my toe in to network automation. The first few scripts I wrote were to do some simple things, like add a line of config in to a switch or search for a vlan on a switch.<br />The reason I wanted to script upgrading firmware is that it is a very manual process to do and takes a long time depending on your infrastructure. </p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>The script in this post is configured to do the following:</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:list --></p>
+<ul>
+<li>Checks what firmware the device is on
+<ul>
+<li>Continues if it is non-compliant</li>
+</ul>
+</li>
+<li>Runs the show flash: command and saves the output</li>
+<li>IF the firmware is already present in flash memory  THEN it verifies the md5 hash</li>
+<li>IF the firmware IS NOT present in flash memory THEN it uses scp to transfer the image and verifies the md5 hash</li>
+</ul>
+<p><!-- /wp:list --></p>
+<p><!-- wp:paragraph --></p>
+<p>It's a fairly simple script but was a good learning experience using blocks and assertions.<br />To transfer the image over, scp must be enabled on the switch and you should keep it in mind that scp is very slow so it can take a long time 10-20 minutes to transfer an image over. But this is still significantly faster than physically putting a USB stick into each switch then transferring the image over.<br />For this script I have been using the firmware for a c2960xr switch, but it can be modified for any firmware version.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>---
+## playbook to firstly check if ios image is present on the switch and verify its md5 signature if it is
+## if it is not present then it uses scp command to copy over and then verify its md5
+## fraser clark - 15/11/19
+
+
+- name: COPY FIRMWARE &amp; VERIFY MD5
+  hosts: all
+  gather_facts: no
+
+  vars: ## these are the only variables to be changed during future upgrades
+    compliant_ios_version: 15.2.4E8
+    ios_md5: 2284cbaf62484a2689880b6a4eff7629
+    file_name: c2960x-universalk9-mz.152-4.E8.bin
+
+  tasks:
+
+    - name: GATHER SWITCH FACTS
+      ios_facts:
+
+    - name: CHECK IOS VERSION ## cancels play if firmware is already compliant
+      assert:
+        that:
+          - "compliant_ios_version != ansible_net_version"
+        success_msg: "Firmware requires upgrade. Continuing..."
+        fail_msg: "Device on correct firmware"
+
+    ## save output of flash memory as a variable
+    - name: show flash
+      ios_command:
+        commands: 'sh flash:'
+      register: shflash 
+
+    ## save running config as a variable
+    - name: Show running config
+      ios_command:
+        commands: show run
+      register: showrun
+
+    - debug: ## print the output for human verification
+        msg: "show flash: '{{ shflash.stdout&#091;0] }}'"
+
+    - debug: ## print the output for human verification
+        msg: "{% if '{{ file_name }}' in shflash.stdout&#091;0] %} IOS Image is present on '{{ inventory_hostname }}' {% else %} beginning image transfer to  '{{inventory_hostname}}' {% endif %}"
+ 
+    - name: VERIFY MD5 IF FILE IS PRESESNT
+      block: 
+
+      - name: CHECK MD5
+        ios_command:
+          commands: verify /md5 flash:{{ file_name }} {{ ios_md5 }}        
+
+      when: "file_name in shflash.stdout&#091;0]" ## the above task will only run if the file is present
+
+    - name: ENABLE SCP IF REQUIRED
+      block:
+
+      - name: ENABLE SCP
+        ios_command:
+          commands: 
+            - conf t
+            - ip scp server enable
+            - exit
+
+      when: "'ip scp server enable' not in showrun.stdout&#091;0]"
+
+    - name: COPY FILE &amp; VERIFY MD5 IF NOT PRESENT
+      block: 
+      - name: COPY IMAGE TO FLASH ## copies file and names it, sshpass is used to preserve already entered ssh creds using -k
+        command: sshpass -p {{ ansible_ssh_pass }} scp ../../static_files/{{ file_name }} ansible.user@{{ inventory_hostname }}:/{{ file_name }}
+
+      - name: CHECK MD5
+        ios_command:
+          commands: verify /md5 flash:{{ file_name }} {{ ios_md5 }}
+
+      - name: DISABLE SCP
+        ios_command:
+          commands:
+            - conf t
+            - no ip scp server enable
+            - exit
+
+      when: "file_name not in shflash.stdout&#091;0]" ## the above tasks will only run if the file is NOT present</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:list --></p>
+<ul>
+<li>I am connecting to the switch using an a user called ansible.user, modify it to fit your purposes</li>
+<li>The debug tasks can be removed if you prefer, this is just for my own sanity</li>
+</ul>
+<p><!-- /wp:list --></p>
