@@ -115,20 +115,8 @@ Proxy_Policy_Name,Provider_Type,Provider_Name,Remote_Server_Address,MS_RAS_Clien
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>If all is configured correctly you should be able to see data in the "radius" index and if done correctly you go from events like this:</p>
+<p>If all is configured correctly you should be able to see data in the "radius" index.</p>
 <!-- /wp:paragraph -->
-
-<!-- wp:image {"id":112,"sizeSlug":"large"} -->
-<figure class="wp-block-image size-large"><img src="https://fraserclark926577729.files.wordpress.com/2019/12/image.png?w=613" alt="" class="wp-image-112" /></figure>
-<!-- /wp:image -->
-
-<!-- wp:paragraph -->
-<p>To events like below:</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:image {"id":114,"sizeSlug":"large"} -->
-<figure class="wp-block-image size-large"><img src="https://fraserclark926577729.files.wordpress.com/2019/12/image-1.png?w=784" alt="" class="wp-image-114" /></figure>
-<!-- /wp:image -->
 
 <!-- wp:paragraph -->
 <p>Hope this helps someone!</p>
