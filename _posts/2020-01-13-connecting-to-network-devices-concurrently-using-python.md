@@ -7,7 +7,7 @@ comments: true
 categories: [Network Automation, Networking, Python]
 ---
 <!-- wp:paragraph -->
-<p>There was one issue with my previous <a href="https://fraserclark.net/2019/12/18/using-python-to-find-interfaces-on-a-specific-vlan/">post </a>about using python to find interfaces on a certain vlan and this was the length of time it took to actually complete the script.<br>From start to finish the script took 3 minutes and 20 seconds, which is still significantly better than doing it manually but it can be improved.</p>
+<p>There was one issue with my previous </a>about using python to find interfaces on a certain vlan and this was the length of time it took to actually complete the script.<br>From start to finish the script took 3 minutes and 20 seconds, which is still significantly better than doing it manually but it can be improved.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
