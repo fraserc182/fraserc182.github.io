@@ -15,6 +15,7 @@ tags: [python, network automation]
 <!-- /wp:paragraph -->
 
 <!-- wp:code -->
+{% highlight %}
 <pre class="wp-block-code"><code>hostname,interface,vlan,description
 sw1,Gi1/0/1,45,**Office**
 sw1,Gi1/0/2,43,**EDI-IPTV012**
@@ -24,6 +25,7 @@ sw7,Gi1/0/18,45,**Dev Team**
 sw12,Gi1/0/22,45,**Dev Team**
 sw12,Gi1/0/23,45,**Dev Team**
 sw12,Gi1/0/24,45,**Dev Team**</code></pre>
+{% endhighlight %}
 <!-- /wp:code -->
 
 <!-- wp:paragraph -->
@@ -31,6 +33,7 @@ sw12,Gi1/0/24,45,**Dev Team**</code></pre>
 <!-- /wp:paragraph -->
 
 <!-- wp:code -->
+{% highlight python %}
 <pre class="wp-block-code"><code>#!/usr/bin/env python
 
 '''
@@ -108,16 +111,18 @@ def main():
 if __name__ == "__main__":
     main()</code></pre>
 <!-- /wp:code -->
+{% endhighlight %}
 
 <!-- wp:paragraph -->
 <p>Running it is fairly straightforward and just needs credentials for the devices you are connecting to.<br>It will output some pretty ugly lines saying what is being connected and what commands are being run. This can be tidied up by modifying these lines:</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:code -->
+{% highlight python %}
 <pre class="wp-block-code"><code>    print(remote_conn.base_prompt)
     print(remote_conn.send_config_set(config_commands))</code></pre>
 <!-- /wp:code -->
-
+{% endhighlight %}
 <!-- wp:paragraph -->
 <p>Anyway, that's all there is to it. This can be adapted into a multitude of uses.</p>
 <!-- /wp:paragraph -->

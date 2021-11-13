@@ -19,6 +19,7 @@ tags: [python, network automation]
 <!-- /wp:paragraph -->
 
 <!-- wp:code -->
+{% highlight python %}
 <pre class="wp-block-code"><code>#!/usr/bin/env python
 """
 Use processes and Netmiko to connect to each of the devices. Execute
@@ -136,12 +137,13 @@ if __name__ == "__main__":
     main()
 </code></pre>
 <!-- /wp:code -->
-
+{% endhighlight %}
 <!-- wp:paragraph -->
 <p>The first thing to know is that I have a file called my_devices.py which acts as an inventory file. It's basic structure is as below and it can be easily expanded for whatever devices you have.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:code -->
+{% highlight python %}
 <pre class="wp-block-code"><code>from getpass import getpass
 
 ssh_pass = getpass("Enter ssh password: ")
@@ -162,7 +164,7 @@ lab_switches = &#091;
     lab_sw,
 ]</code></pre>
 <!-- /wp:code -->
-
+{% endhighlight %}
 <!-- wp:paragraph -->
 <p>I am also using cprint to make terminal output look nice, but this can be ignored if you do not want to use cprint.</p>
 <!-- /wp:paragraph -->
@@ -176,6 +178,7 @@ lab_switches = &#091;
 <!-- /wp:paragraph -->
 
 <!-- wp:code -->
+{% highlight python %}
 <pre class="wp-block-code"><code>def show_cisco_commands(a_device, output_q):
     """
     Use Netmiko to execute commands. Use a queue to pass the data back to
@@ -203,7 +206,7 @@ lab_switches = &#091;
     output_q.put(output_dict)
 </code></pre>
 <!-- /wp:code -->
-
+{% endhighlight %}
 <!-- wp:paragraph -->
 <p>What this does is connects to the device, sends the <em>show int status</em> command  then this output is parsed using ntc templates. ntc templates parses commands into a nice dictionary which can be worked with a lot easier than the normal output.<br>The next part is the for loop, which loops through the <em>sh_commands_parsed </em>output and looks for the values you have specified.</p>
 <!-- /wp:paragraph -->

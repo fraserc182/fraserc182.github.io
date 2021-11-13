@@ -23,6 +23,7 @@ tags: [python, network automation]
 <!-- /wp:paragraph -->
 
 <!-- wp:code -->
+{% highlight python %}
 <pre class="wp-block-code"><code>
 ## import required modules
 from netmiko import ConnectHandler
@@ -57,7 +58,7 @@ for x in switches:
             status = (i&#091;'status'])
             print('Found port '+intf, 'on VLAN ' +vlans, '&amp; Port is: ' +status)</code></pre>
 <!-- /wp:code -->
-
+{% endhighlight %}
 <!-- wp:paragraph -->
 <p>I am used to working with hosts files in Ansible, so to keep things similar I created a hosts.txt filevand bring this into the script as a list. <br>This list is then iterated through. </p>
 <!-- /wp:paragraph -->
