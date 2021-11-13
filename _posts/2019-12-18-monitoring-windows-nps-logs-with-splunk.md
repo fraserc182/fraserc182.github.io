@@ -2,9 +2,9 @@
 layout: post
 title: Monitoring Windows NPS logs with Splunk
 date: 2019-12-18 21:51
-author: fraserkr160118
+author: Fraser Clark
 comments: true
-categories: [archive]
+tags: [splunk]
 ---
 <!-- wp:paragraph -->
 <p>In our environment we use Windows Network Policy Server (NPS) for our Radius solution. When we were having some issues with authentication to certain switches I realised that the logs were not being monitored by Splunk as I previously thought. </p>

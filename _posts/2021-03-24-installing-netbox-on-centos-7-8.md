@@ -2,9 +2,9 @@
 layout: post
 title: Installing Netbox on CentOS 7.8
 date: 2021-03-24 12:45
-author: fraserkr160118
+author: Fraser Clark
 comments: true
-categories: [archive]
+tags: [netbox]
 ---
 <!-- wp:paragraph -->
 <p>I've found the official docs to be lacking when installing netbox on CentOS.<br>When moving Netbox to a new server I scripted the entire install, this should be easy enough to modify if required or just copy the steps and do it manually.</p>

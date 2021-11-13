@@ -2,9 +2,9 @@
 layout: post
 title: Connecting to network devices concurrently using Python
 date: 2020-01-13 15:32
-author: fraserkr160118
+author: Fraser Clark
 comments: true
-categories: [archive]
+tags: [python, network automation]
 ---
 <!-- wp:paragraph -->
 <p>There was one issue with my previous </a>about using python to find interfaces on a certain vlan and this was the length of time it took to actually complete the script.<br>From start to finish the script took 3 minutes and 20 seconds, which is still significantly better than doing it manually but it can be improved.</p>
