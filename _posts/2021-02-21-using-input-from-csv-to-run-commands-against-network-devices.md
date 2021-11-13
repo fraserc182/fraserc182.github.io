@@ -4,7 +4,7 @@ title: Using input from csv to run commands against network devices
 date: 2021-02-21 15:53
 author: fraserkr160118
 comments: true
-categories: [Network Automation, Networking]
+categories: [archive]
 ---
 <!-- wp:paragraph -->
 <p>This is a script I use in a variety of ways. It's good to have it available when you need to run commands against a lot of devices.<br>It's a simple concept, write what you want in the csv file and then the script loops through it executing those commands on the switches concurrently.</p>

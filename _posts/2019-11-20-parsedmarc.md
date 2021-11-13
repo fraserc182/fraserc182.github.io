@@ -4,7 +4,7 @@ title: Parsedmarc
 date: 2019-11-20 23:42
 author: fraserkr160118
 comments: true
-categories: [dmarc, email, Everything Else, security]
+categories: [archive]
 ---
 <!-- wp:paragraph -->
 <p>Parsedmarc is an open source linux tool that can read DMARC reports, parse the results into an RFC compliant format and then output it as JSON.<br>It is an excellent tool and also integrates with Splunk very nicely which is why I thought to write about it here.<br>The parsedmarc documentation can be found here:  <a href="https://domainaware.github.io/parsedmarc/">https://domainaware.github.io/parsedmarc/</a> <br>The documentation is fairly robust but I did have some troubles initially when setting it up.</p>

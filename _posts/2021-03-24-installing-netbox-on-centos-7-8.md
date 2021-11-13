@@ -4,7 +4,7 @@ title: Installing Netbox on CentOS 7.8
 date: 2021-03-24 12:45
 author: fraserkr160118
 comments: true
-categories: [Networking]
+categories: [archive]
 ---
 <!-- wp:paragraph -->
 <p>I've found the official docs to be lacking when installing netbox on CentOS.<br>When moving Netbox to a new server I scripted the entire install, this should be easy enough to modify if required or just copy the steps and do it manually.</p>
@@ -87,6 +87,7 @@ SECRET_KEY = 'var_secretkey'
 # application errors (assuming correct email settings are provided).
 ADMINS = &#091;
      &#091;'admin', 'admin@admin.com']
+
 ]
 
 # URL schemes that are allowed within links in NetBox

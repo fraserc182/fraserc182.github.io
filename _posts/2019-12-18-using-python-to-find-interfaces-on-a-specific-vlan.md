@@ -4,7 +4,7 @@ title: Using Python to find interfaces on a certain VLAN
 date: 2019-12-18 22:57
 author: fraserkr160118
 comments: true
-categories: [Network Automation, Python]
+categories: [archive]
 ---
 <!-- wp:paragraph -->
 <p>This topic was the first thing I ever wanted to get out of automation and is what kick-started my learning.<br>And again, this is all available on my github.<br>I had a simple use case which went like so:</p>
