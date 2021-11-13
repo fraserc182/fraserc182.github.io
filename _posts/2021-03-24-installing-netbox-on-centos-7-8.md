@@ -19,7 +19,9 @@ tags: [netbox]
 <!-- /wp:paragraph -->
 
 <!-- wp:code -->
-<pre class="wp-block-code"><code>#########################
+<pre class="wp-block-code"><code>
+{% highlight bash linenos %}
+#########################
 #                       #
 #   Required settings   #
 #                       #
@@ -446,4 +448,5 @@ echo install complete
 echo credentials saved to /root/netbox_creds.txt
 exit
 </code></pre>
+{% endhighlight %}
 <!-- /wp:code -->
