@@ -20,7 +20,7 @@ tags: [netbox]
 
 <!-- wp:code -->
 <pre class="wp-block-code"><code>
-{% highlight bash linenos %}
+{% highlight bash %}
 #########################
 #                       #
 #   Required settings   #
