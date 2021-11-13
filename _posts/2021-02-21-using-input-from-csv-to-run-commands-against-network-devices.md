@@ -15,7 +15,6 @@ tags: [python, network automation]
 <!-- /wp:paragraph -->
 
 <!-- wp:code -->
-{% highlight %}
 <pre class="wp-block-code"><code>hostname,interface,vlan,description
 sw1,Gi1/0/1,45,**Office**
 sw1,Gi1/0/2,43,**EDI-IPTV012**
@@ -25,7 +24,6 @@ sw7,Gi1/0/18,45,**Dev Team**
 sw12,Gi1/0/22,45,**Dev Team**
 sw12,Gi1/0/23,45,**Dev Team**
 sw12,Gi1/0/24,45,**Dev Team**</code></pre>
-{% endhighlight %}
 <!-- /wp:code -->
 
 <!-- wp:paragraph -->
