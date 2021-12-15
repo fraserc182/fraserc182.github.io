@@ -41,10 +41,8 @@ This is because I am not keeping a list of the DAG's and their current state in 
 
 ## The script
 
-<details>
-    <summary>
-        Click to expand script
-    </summary>
+<details><summary>Click to expand script</summary>
+<p>
 
 ```python
 
@@ -303,5 +301,6 @@ def lambda_handler(event, context):
     # print the time it took to run this because why not
     logger.info(f"Elapsed time: {str(datetime.now() - start_time)}")
 ```
+</p>
 </details>
 
