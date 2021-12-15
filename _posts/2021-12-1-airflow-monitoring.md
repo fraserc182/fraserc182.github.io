@@ -43,8 +43,7 @@ This is because I am not keeping a list of the DAG's and their current state in 
 
 <details>
     <summary>Click to expand script</summary>
-
-
+    
 ```python
 
 import json
@@ -301,8 +300,6 @@ def lambda_handler(event, context):
 
     # print the time it took to run this because why not
     logger.info(f"Elapsed time: {str(datetime.now() - start_time)}")
-
 ```
-
 </details>
 
