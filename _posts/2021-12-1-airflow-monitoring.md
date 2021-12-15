@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Monitoring Apache Airflow failed DAG runs
+title: Monitoring Apache Airflow failed DAG runs with Python
 date: 2021-12-1
 author: Fraser Clark
 comments: true
@@ -43,7 +43,7 @@ This is because I am not keeping a list of the DAG's and their current state in 
 
 <details>
     <summary>Click to expand script</summary>
-    
+
 ```python
 
 import json
