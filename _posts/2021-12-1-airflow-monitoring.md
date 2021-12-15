@@ -41,7 +41,7 @@ This is because I am not keeping a list of the DAG's and their current state in 
 
 ## The script
 
-<details><summary summary markdown='span'/>Click to expand</summary>
+<details><summary markdown='span'>Click to expand</summary>
 
 ```python
 
