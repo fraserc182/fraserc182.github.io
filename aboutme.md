@@ -1,7 +1,6 @@
 ---
 layout: page
 title: About me
-subtitle: about fraser clark
 ---
 
-My name is Fraser Clark. I am a devops engineer with a background in networking.
+My name is Fraser, a platform engineer with a background in networking.
