@@ -34,10 +34,11 @@ finally:
 Now on the remote machine you can run:
 
 ```bash
-sudo tcpdump -i <interface> udp port UDP PORT
+sudo tcpdump -i <interface> udp port <UDP PORT>
 ```
 
-You'll need `tcpdump` installed and also replace `<interface>` with the actual interface name, e.g. `eth0`.
+Ensure `tcpdump` is installed.
+Replace `<interface>` with the actual interface name, e.g. `eth0` and `<UDP PORT>` with the actual UDP port number.
 Find the interface with `ifconfig` or similar
 
 Run tcpdump and then run the python script, you should see the message appear in the tcpdump output.
